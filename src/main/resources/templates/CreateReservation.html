@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réserver votre salle</title>
+</head>
+
+<body>
+<div th:replace="~{layout/navbar.html}"></div>
+<header>
+    <h1>Réserver maintenant</h1>
+</header>
+<main style="max-width: 800px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <form th:action="@{saveReservation}" method="post" class="reservation-form" style="display: grid; grid-gap: 20px;">
+        <div>
+            <label for="nom_Reservant" style="font-weight: bold; font-size: 1.2em;">Nom de Reservant :</label>
+            <input type="text" id="nom_Reservant" name="nomReservant" style="width: 100%; padding: 15px; font-size: 1.2em; border-radius: 10px; border: 1px solid #ccc;">
+        </div>
+        <div>
+            <label for="date_debut" style="font-weight: bold; font-size: 1.2em;">Date de début :</label>
+            <input type="date" id="date_debut" name="date_debut" style="width: 100%; padding: 15px; font-size: 1.2em; border-radius: 10px; border: 1px solid #ccc;">
+        </div>
+        <div>
+            <label for="date_fin" style="font-weight: bold; font-size: 1.2em;">Date de fin :</label>
+            <input type="date" id="date_fin" name="date_fin" style="width: 100%; padding: 15px; font-size: 1.2em; border-radius: 10px; border: 1px solid #ccc;">
+        </div>
+        <div>
+            <label for="heure_Debut" style="font-weight: bold; font-size: 1.2em;">Heure de début :</label>
+            <input type="time" id="heure_Debut" name="heure_debut" style="width: 100%; padding: 15px; font-size: 1.2em; border-radius: 10px; border: 1px solid #ccc;">
+        </div>
+        <div>
+            <label for="heure_Fin" style="font-weight: bold; font-size: 1.2em;">Heure de fin :</label>
+            <input type="time" id="heure_Fin" name="heure_fin" style="width: 100%; padding: 15px; font-size: 1.2em; border-radius: 10px; border: 1px solid #ccc;">
+        </div>
+        <div>
+            <input type="submit" value="Save" style="background-color: #333; color: white; cursor: pointer; width: 100%; padding: 15px; font-size: 1.2em; border-radius: 10px; border: 1px solid #ccc;">
+        </div>
+    </form>
+</main>
+<div th:replace="~{layout/footer.html}"></div>
+
+</body>
+
+
+</html>

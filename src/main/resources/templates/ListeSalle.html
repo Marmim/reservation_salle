@@ -1,0 +1,58 @@
+
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Liste Salle</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+
+</head>
+<body>
+<div th:replace="~{layout/navbar.html}"></div>
+<br><br><br><br>
+<header>
+    <h1 style="margin-bottom: 20px;margin-top: 60px">Liste des salles</h1>
+</header>
+<main>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">nom salle</th>
+            <th scope="col">Capacite</th>
+            <th scope="col">Type</th>
+            <th scope="col">Tarif</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Adresse</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+            <tr th:each="salle:${SalleVue}">
+                <td th:text="${salle.id_salle}"></td>
+                <td th:text="${salle.nom_salle}"></td>
+                <td th:text="${salle.Capacite}"></td>
+                <td th:text="${salle.type_equipement}"></td>
+                <td th:text="${salle.tarif}"></td>
+                <td th:text="${salle.photo}"></td>
+                <td th:text="${salle.adresse_salle}"></td>
+                <td>
+                    <a class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                       onclick="return confirm('vous etes sur de supprimer cette salle')"
+                            th:href="@{deleteSalle(id=${salle.id_salle})}">Supprimer</a>
+                </td>
+                <td>
+                    <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                           th:href="@{editSalle(id=${salle.id_salle})}">Modifier</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>

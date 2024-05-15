@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Louer Votre espace Disponible</title>
+</head>
+<body>
+<div th:replace="~{layout/navbar.html}"></div>
+<section id="home" class="welcome-hero" style="background-image: url('/images/welcome-hero/salle2.jpg'); background-size: cover;">
+    <div class="container" style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+        <div class="welcome-hero-txt text-center">
+            <h2>Proposer votre salle</h2>
+        </div>
+    </div>
+</section>
+
+<br><br><br>
+
+<main>
+    <div style="margin-left: 70px;margin-top: 40px">
+    <p>Pour proposer votre propre salle dans notre site de réservation des salles, veuillez suivre les étapes suivantes :</p>
+    <ol>
+        <li>Remplissez le formulaire ci-dessous de votre informations personnelles.</li>
+    </ol>
+    </div>
+    <form id="userForm" th:action="@{saveutilisateurs}" method="post" class="container" style="max-width:600px; background-color: darkslategray; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h2 style="color: #1b1e20;margin-top: 30px">Infos personnelles</h2>
+        <div class="col-md-8 mb-3">
+            <label for="Nom" class="form-label">Votre Nom:</label>
+            <input type="text" name="nom" id="Nom" placeholder="Nom " required>
+        </div>
+            <div class="col-md-8 mb-3">
+            <label for="Prenom" class="form-label">Votre Prénom:</label>
+            <input type="text"  id="Prenom" name="prenom"  placeholder="Prénom" required>
+            </div>
+                <div class="col-md-8 mb-3">
+            <label for="Tele" class="form-label">Num de Telephone:</label>
+            <input type="tel" id="Tele" name="tele" placeholder="+212" required>
+                </div>
+                    <div class="col-md-8 mb-3">
+            <label for="Email" class="form-label">Adresse e-mail:</label>
+            <input type="email" id="Email" name="email" placeholder="MARYAME@gmail.com" required>
+        </div>
+        <br><br><br>
+        <div class="text-center" style="margin-bottom: 20px; margin-top: 20px">
+            <button type="submit" class="btn btn-primary" >Enregistrer vos Infos</button>
+        </div>
+    </form>
+    <div class="text-center" th:if="${enregistrementReussi}">
+        <p style="color:green;font-size: large">Votre info a été enregistrée avec succès !</p>
+    </div>
+    <br><br>
+    <div style="margin-left: 70px;margin-top: 40px ;">
+    <ol>
+        <li>Remplissez le formulaire ci-dessous avec les détails de votre salle.</li>
+        <li>Cliquez sur le bouton "Lancer votre salle" pour soumettre votre proposition.</li>
+        <li>Votre salle sera examinée par notre équipe et ajoutée à la liste des salles disponibles après validation.</li>
+    </ol>
+    </div>
+    <form id="salleForm" th:action="@{saveSalle}" method="post" class="container" style="max-width:600px;margin-top: 50px;background-color: darkslategray; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h2 style="color: #1b1e20;margin-top: 30px">Infos sur Salle</h2>
+        <div class="col-md-8 mb-3">
+            <label for="nomSalle" class="form-label">Nom d'espace:</label>
+            <input type="text" class="form-control" id="nomSalle" name="nom_salle" placeholder="Salle" required>
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="nomType" class="form-label">Type:</label><br>
+            <select class="form-select" id="nomType" name="type_equipement" required>
+                <option value="Salle Réunion">Salle de réunion</option>
+                <option value="Salle Conférence">Salle de conférence </option>
+                <option value="Salle de Formation">Salle de formation </option>
+            </select>
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="capacite" class="form-label">Capacité :</label>
+            <input type="number" class="form-control" id="capacite" name="Capacite" placeholder="Nombre de Personnes" required>
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="Tarif" class="form-label">Tarif de votre salle:</label>
+            <input type="number" class="form-control" id="Tarif" name="tarif" placeholder="En DH" required>
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="Photo" class="form-label">Photo:</label>
+            <input type="text" class="form-control" id="Photo" name="photo" placeholder=".jpg/.png" required>
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="adresseSalle" class="form-label">Adresse de votre salle :</label>
+            <input type="text" class="form-control" id="adresseSalle" name="adresse_salle" placeholder="Rue mohamed5 Casablanca" required>
+        </div>
+     <br><br>
+        <div class="text-center" style="margin-bottom: 20px; margin-top: 20px">
+            <button type="submit" class="btn btn-primary" >Lancer votre salle</button>
+        </div>
+    </form>
+    <div class="text-center" th:if="${lancementReussi}">
+        <p style="color:green;font-size: large">Votre éspace a été lancé avec succès !</p>
+    </div>
+</main>
+<div th:replace="~{layout/footer.html}"></div>
+
+</body>
+</html>

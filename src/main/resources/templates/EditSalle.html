@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier Salle</title>
+</head>
+
+<body>
+<div th:replace="~{layout/navbar.html}"></div>
+<header style="background-color: #333; color: white; padding: 20px 0; text-align: center;">
+    <h1>Modifier</h1>
+</header>
+
+<main>
+
+    <form id="salleForm" th:action="@{updateSalle}" method="post" class="container" style="max-width:600px;margin-top: 50px;background-color: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <h2 style="color: #1b1e20;margin-top: 30px">Modifier la Salle</h2>
+        <div class="col-md-8 mb-3">
+            <label for="nomSalle" class="form-label">Nom d'espace:</label>
+            <input type="text" class="form-control" id="nomSalle" name="nom_salle"  th:value="${SalleVue.nom_salle}">
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="nomType" class="form-label">Type:</label><br>
+            <select class="form-select" id="nomType" name="type_equipement" th:value="${SalleVue.type_equipement}">
+                <option value="reunion">Salle de réunion</option>
+                <option value="conference">Salle de conférence </option>
+                <option value="formation">Salle de formation </option>
+            </select>
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="capacite" class="form-label">Capacité :</label>
+            <input type="number" class="form-control" id="capacite" name="Capacite" th:value="${SalleVue.Capacite}">
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="Tarif" class="form-label">Tarif de votre salle:</label>
+            <input type="number" class="form-control" id="Tarif" name="tarif" th:value="${SalleVue.tarif}">
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="Photo" class="form-label">Photo:</label>
+            <input type="text" class="form-control" id="Photo" name="photo" th:value="${SalleVue.photo}">
+        </div>
+        <div class="col-md-8 mb-3">
+            <label for="adresseSalle" class="form-label">Adresse de votre salle :</label>
+            <input type="text" class="form-control" id="adresseSalle" name="adresse_salle" th:value="${SalleVue.adresse_salle}">
+        </div>
+        <br><br>
+        <div class="text-center" style="margin-bottom: 20px; margin-top: 20px">
+            <button type="submit" class="btn btn-success" >Modifier</button>
+        </div>
+    </form>
+
+</main>
+
+<div th:replace="~{layout/footer.html}"></div>
+
+</body>
+</html>

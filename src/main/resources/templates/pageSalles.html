@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des salles</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<div th:replace="~{layout/navbar.html}"></div>
+<div class="room-list" style="margin-top: 130px">
+    <div th:each="salle : ${SalleVue}" class="room-item" th:style="'background-image: url(' + ${salle.photo} + ')'">
+        <div class="room-info">
+            <p th:text="${salle.type_equipement}"></p>
+            <p> <span th:text="${salle.capacite}"></span>Personnes</p>
+            <p>Prix:<span th:text="${salle.tarif}"></span> DH/heures</p>
+        </div>
+    </div>
+</div>
+<div th:replace="~{layout/footer.html}"></div>
+
+</body>
+</html>

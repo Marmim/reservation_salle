@@ -1,0 +1,161 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link th:href="@{https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i}" rel="stylesheet">
+		<link rel="stylesheet" th:href="@{/css/StyleSearch.css}">
+        <!-- title of site -->
+        <title>EventSpace|Salles</title>
+
+		<!--animate.css-->
+        <link rel="stylesheet" th:href="@{/css/animate.css}">
+
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+
+        <!--style.css-->
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    </head>
+	<body>
+	<div th:replace="~{layout/navbar.html}"></div>
+		<section id="home" class="welcome-hero" style="background-image: url('/images/welcome-hero/salle.jpg')">
+			<div class="container">
+                    <div class="welcome-hero-txt">
+                        <h2>Réservez les meilleurs espaces en un seul clic!</h2>
+                    </div>
+				<br><br><br><br><br><br>
+				<div class="text-center">
+				<form action="/search" method="GET">
+					<label th:text="Salle" for="type_salle" style="color: #222222; font-size: 15px;"> Salle :</label>
+						<select name="type_equipement" id="type_salle">
+							<option value="reunion">Salle de Réunion</option>
+							<option value="conference">Salle de Conférence</option>
+							<option value="formation">Salled de Formation</option>
+						</select>
+                     <br><br>
+					<label for="capacite" style="color: #222222; font-size: 15px;">Nombre de participants :</label>
+					<input type="number" id="capacite" name="Capacite" min="1">
+					<br><br>
+					<input type="submit" value="Chercher">
+				</form>
+			</div>
+			</div>
+		</section>
+            <section id="list-topics" class="list-topics">
+            <div class="container" id="Reserver">
+				<div class="text-center">
+                <div class="list-topics-content">
+                    <ul>
+                        <li>
+                            <div class="single-list-topics-content">
+                                <div class="single-list-topics-icon">
+                                    <img th:src="@{/img/reunion.png}" alt="reunion" style="width:100px">
+                                </div>
+                                <h2><a href="#">Salle de Réunion</a></h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="single-list-topics-content">
+                                <div class="single-list-topics-icon">
+                                    <img th:src="@{/img/conference.png}" alt="conference" style="width:100px">
+                                </div>
+                                <h2><a href="#">Salle de Conférence</a></h2>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="single-list-topics-content">
+                                <div class="single-list-topics-icon">
+                                    <img th:src="@{/img/formation.png}" alt="formation" style="width:100px">
+                                </div>
+                                <h2><a href="#">Salle de Formation</a></h2>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+			</div>
+            </section>
+
+
+		<!--works start -->
+             <br><br><br>
+		<section id="about" class="explore">
+		<div class="container">
+				<div class="section-header">
+					<h2 >A Propos </h2>
+					<p>Notre entreprise EventSpace propose des solutions de réservation de salles d'événements sur mesure depuis 2020. Notre mission est d'offrir des espaces événementiels de haute qualité et un service client exceptionnel pour garantir le succès de chaque événement. Que ce soit pour une réunion d'affaires, une conférence, une formation ou tout autre événement, nous sommes là pour vous accompagner à chaque étape. Contactez-nous dès aujourd'hui pour réserver votre salle et commencer à planifier votre prochain événement avec EventSpace.</p>
+				</div><!--/.section-header-->
+		</div>
+		</section>
+		<section id="services" class="explore">
+				<div class="container">
+					<div class="section-header">
+						<h2>  Nos Services</h2>
+					</div>
+					<br><br>
+					<div class="row">
+						<div class="col-md-6">
+							<img th:src="@{img/Reunion.jpg}" alt="Reunion" class="image">
+						</div>
+						<div class="col-md-6">
+							<div class="description">
+								<h3>Salle de Réunion</h3>
+								<br>
+								<p>Nos salles de réunion sont conçues pour offrir un environnement professionnel et fonctionnel pour vos réunions d'affaires. Dotées d'une capacité flexible pour accueillir des petits groupes de travail jusqu'à des réunions plus importantes, nos salles sont équipées des dernières technologies audiovisuelles pour faciliter vos présentations.
+									Que vous organisiez une réunion stratégique, nos salles sont configurables pour répondre à vos besoins spécifiques. Avec un mobilier confortable, un accès Internet haut débit et un service traiteur sur demande, nous veillons à ce que votre réunion soit aussi productive que possible.
+									Contactez-nous dès aujourd'hui pour réserver l'une de nos salles de réunion et offrir à vos participants une expérience professionnelle et réussie.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+    <br><br><br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<img th:src="@{img/Conference.jpg}" alt="Conference" class="image">
+				</div>
+				<div class="col-md-6">
+					<div class="description">
+						<h3>Salle de Conférence</h3>
+						<br>
+						<p>Nos salles de conférence sont conçues pour accueillir des événements professionnels de toutes tailles, offrant un espace spacieux et équipé pour des présentations réussies. Avec une capacité flexible pour s'adapter à différents formats d'événements, nos salles sont équipées de systèmes audiovisuels de pointe pour garantir une expérience immersive pour vos participants.
+							Que vous organisiez une conférence, un séminaire ou un symposium, nos salles de conférence sont conçues pour répondre à vos besoins en matière de présentation et de confort. Des sièges confortables, un éclairage réglable, un accès Internet haut débit et un support technique sur place sont quelques-unes des fonctionnalités que nous offrons pour assurer le succès de votre événement.
+							Contactez-nous dès aujourd'hui pour réserver l'une de nos salles de conférence et offrir à vos participants une expérience professionnelle et mémorable.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+ <br><br><br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<img th:src="@{img/Formation.jpg}" alt="Formation" class="image">
+				</div>
+				<div class="col-md-6">
+					<div class="description">
+						<h3>Salle de Formation</h3>
+						<br>
+						<p>Nos salles de formation sont conçues pour offrir un environnement propice à l'apprentissage et au développement professionnel. Avec des espaces modulables et adaptables, nos salles peuvent accueillir des formations de groupe de différentes tailles.
+							Équipées de matériel pédagogique moderne et de technologies audiovisuelles avancées, nos salles de formation sont idéales pour des sessions interactives et engageantes. Des tables et des chaises ergonomiques assurent le confort des participants pendant les longues sessions de formation.
+							Que vous organisiez une formation en entreprise, un atelier ou un séminaire, nos salles de formation sont conçues pour répondre à vos besoins spécifiques. Contactez-nous dès aujourd'hui pour réserver l'une de nos salles et offrir à vos participants une expérience d'apprentissage enrichissante et productive.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+</section>
+	<div th:replace="~{layout/footer.html}"></div>
+
+
+        
+    </body>
+	
+</html>
