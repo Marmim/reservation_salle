@@ -38,6 +38,7 @@ public class SalleController {
         return "ListeSalle";
     }
     @RequestMapping("/saveSalle")
+    //@ModelAttribute est utilisé pour lier les données du formulaire à un objet modèle
     public String saveSalle(@ModelAttribute("SalleVue") Salle salleController,ModelMap modelmap) {
         Salle saveSalle = salleService.saveSalle(salleController);
         modelmap.addAttribute("lancementReussi", true);
@@ -51,11 +52,13 @@ public class SalleController {
         return "ListeSalle";
     }
     @RequestMapping("/deleteSalle")
+    // Modelmap:transporter des données entre un contrôleur et une vue
     public String deleteSalle(@RequestParam("id") Long id, ModelMap modelmap) {
         salleService.deleteSalleById(id);
        return  listeSalle(modelmap);
     }
     @RequestMapping("/editSalle")
+    //@RequestParam est utilisé pour extraire des paramètres spécifiques de la requête,
     public String editSalle(@RequestParam("id") Long id, ModelMap modelmap) {
        Salle salleController= salleService.getSalle(id);
        modelmap.addAttribute("SalleVue",salleController);
@@ -63,7 +66,7 @@ public class SalleController {
     }
     @GetMapping("/pageSalles")
     public String getAllSalle(ModelMap modelmap) {
-        List<Salle> salle =salleRepository.findAll(); // Supposons que salleRepository est votre repository pour accéder aux données des salles
+        List<Salle> salle =salleRepository.findAll();
         modelmap.addAttribute("SalleVue", salle);
         return "pageSalles";
     }

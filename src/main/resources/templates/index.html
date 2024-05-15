@@ -50,43 +50,43 @@
 			</div>
 			</div>
 		</section>
-            <section id="list-topics" class="list-topics">
-            <div class="container" id="Reserver">
-				<div class="text-center">
-                <div class="list-topics-content">
-                    <ul>
-                        <li>
-                            <div class="single-list-topics-content">
-                                <div class="single-list-topics-icon">
-                                    <img th:src="@{/img/reunion.png}" alt="reunion" style="width:100px">
-                                </div>
-                                <h2><a href="#">Salle de Réunion</a></h2>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="single-list-topics-content">
-                                <div class="single-list-topics-icon">
-                                    <img th:src="@{/img/conference.png}" alt="conference" style="width:100px">
-                                </div>
-                                <h2><a href="#">Salle de Conférence</a></h2>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="single-list-topics-content">
-                                <div class="single-list-topics-icon">
-                                    <img th:src="@{/img/formation.png}" alt="formation" style="width:100px">
-                                </div>
-                                <h2><a href="#">Salle de Formation</a></h2>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+	<section id="list-topics" class="list-topics">
+		<div class="container" id="Reserver">
+			<div class="text-center">
+				<div class="list-topics-content">
+					<ul>
+						<li data-type="reunion">
+							<div class="single-list-topics-content">
+								<div class="single-list-topics-icon">
+									<img th:src="@{/img/reunion.png}" alt="reunion" style="width:100px">
+								</div>
+								<h2><a href="#">Salle de Réunion</a></h2>
+							</div>
+						</li>
+						<li data-type="conference">
+							<div class="single-list-topics-content">
+								<div class="single-list-topics-icon">
+									<img th:src="@{/img/conference.png}" alt="conference" style="width:100px">
+								</div>
+								<h2><a href="#">Salle de Conférence</a></h2>
+							</div>
+						</li>
+						<li data-type="formation">
+							<div class="single-list-topics-content">
+								<div class="single-list-topics-icon">
+									<img th:src="@{/img/formation.png}" alt="formation" style="width:100px">
+								</div>
+								<h2><a href="#">Salle de Formation</a></h2>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
-            </section>
+		</div>
+	</section>
 
 
-		<!--works start -->
+	<!--works start -->
              <br><br><br>
 		<section id="about" class="explore">
 		<div class="container">
@@ -152,7 +152,51 @@
 			</div>
 		</div>
 </section>
+
 	<div th:replace="~{layout/footer.html}"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         
