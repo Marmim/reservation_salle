@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Liste Salle</title>
 
+    <!-- Inclure Bootstrap et Font Awesome directement depuis le CDN -->
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
 
@@ -15,12 +16,12 @@
 <div th:replace="~{layout/navbar.html}"></div>
 <br><br><br><br>
 <header>
-    <h1 style="margin-bottom: 20px;margin-top: 60px">Liste des salles</h1>
+    <h1 style="margin-bottom: 20px; margin-top: 60px; color: #080500; margin-left: 20px;">Liste des salles</h1>
 </header>
 <main>
     <table class="table">
         <thead class="thead-dark">
-        <tr>
+        <tr class="table-secondary">
             <th scope="col">ID</th>
             <th scope="col">nom salle</th>
             <th scope="col">Capacite</th>
@@ -34,7 +35,7 @@
         <tbody>
 
             <tr th:each="salle:${SalleVue}">
-                <td th:text="${salle.id_salle}"></td>
+                <td class="table-secondary" th:text="${salle.id_salle}"></td>
                 <td th:text="${salle.nom_salle}"></td>
                 <td th:text="${salle.Capacite}"></td>
                 <td th:text="${salle.type_equipement}"></td>
@@ -42,17 +43,26 @@
                 <td th:text="${salle.photo}"></td>
                 <td th:text="${salle.adresse_salle}"></td>
                 <td>
-                    <a class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    <a class="btn btn-primary btn-danger"
                        onclick="return confirm('vous etes sur de supprimer cette salle')"
                             th:href="@{deleteSalle(id=${salle.id_salle})}">Supprimer</a>
                 </td>
                 <td>
-                    <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                    <a class="btn btn-primary btn-success"
                            th:href="@{editSalle(id=${salle.id_salle})}">Modifier</a>
                 </td>
             </tr>
         </tbody>
     </table>
+    <ul  class="nav nav-pills">
+        <li th:each="page,status:${pages}">
+
+            <a th:class="${status.index==currentPage?'btn btn-primary':'btn'}"
+            th:href="@{listeSalle(page=${status.index}, size=${size})}"
+               th:text="${status.index}"
+            ></a>
+        </li>
+    </ul>
 </main>
 </body>
 </html>

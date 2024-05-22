@@ -5,6 +5,8 @@ import com.example.reservation_salle.entities.Salle;
 import com.example.reservation_salle.repositories.ReservationRepository;
 import com.example.reservation_salle.repositories.SalleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -54,7 +56,11 @@ public class SalleServiceImpl implements SalleService{
 
     }
 
-
-
+    @Override
+    public Page<Salle> getAllSalleByPage(int page, int size) {
+        return salleRepository.findAll(PageRequest.of(page,size));
     }
+
+
+}
 

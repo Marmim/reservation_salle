@@ -18,6 +18,11 @@
 
     <form id="salleForm" th:action="@{updateSalle}" method="post" class="container" style="max-width:600px;margin-top: 50px;background-color: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
         <h2 style="color: #1b1e20;margin-top: 30px">Modifier la Salle</h2>
+
+        <div class="col-md-8 mb-3">
+            <label for="id_salle" class="form-label">Nom d'espace:</label>
+            <input type="text"  readonly class="form-control" id="id_salle" name="id_salle"  th:value="${SalleVue.id_salle}">
+        </div>
         <div class="col-md-8 mb-3">
             <label for="nomSalle" class="form-label">Nom d'espace:</label>
             <input type="text" class="form-control" id="nomSalle" name="nom_salle"  th:value="${SalleVue.nom_salle}">
@@ -25,9 +30,9 @@
         <div class="col-md-8 mb-3">
             <label for="nomType" class="form-label">Type:</label><br>
             <select class="form-select" id="nomType" name="type_equipement" th:value="${SalleVue.type_equipement}">
-                <option value="reunion">Salle de réunion</option>
-                <option value="conference">Salle de conférence </option>
-                <option value="formation">Salle de formation </option>
+                <option value="Salle de Réunion">Salle de réunion</option>
+                <option value="Salle de Conférence">Salle de conférence </option>
+                <option value="Salle de Formation">Salle de formation </option>
             </select>
         </div>
         <div class="col-md-8 mb-3">
@@ -48,7 +53,7 @@
         </div>
         <br><br>
         <div class="text-center" style="margin-bottom: 20px; margin-top: 20px">
-            <button type="submit" class="btn btn-success" >Modifier</button>
+            <input type="submit" class="btn btn-success" value="Modifier" ></input>
         </div>
     </form>
 

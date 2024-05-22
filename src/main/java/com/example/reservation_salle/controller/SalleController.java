@@ -7,6 +7,7 @@ import com.example.reservation_salle.repositories.SalleRepository;
 import com.example.reservation_salle.services.SalleService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,8 +35,8 @@ public class SalleController {
     // Cette méthode met à jour une salle en utilisant les données du formulaire.
     @RequestMapping("/updateSalle")
     public String updateSalle(@ModelAttribute("SalleVue") Salle salleController) {
-        Salle saveSalle = salleService.saveSalle(salleController);
-        return "ListeSalle";
+        Salle saveSalle = salleService.updateSalle(salleController);
+        return "listeSalle";
     }
     @RequestMapping("/saveSalle")
     //@ModelAttribute est utilisé pour lier les données du formulaire à un objet modèle
@@ -46,17 +47,33 @@ public class SalleController {
     }
 
     @RequestMapping("/listeSalle")
-    public String listeSalle(ModelMap modelmap) {
-        List<Salle> salleController = salleService.getAllSalle();
+    public String listeSalle(ModelMap modelmap,
+                             @RequestParam(name = "page",defaultValue = "0") int page,
+                             @RequestParam(name = "size",defaultValue = "3") int size
+
+                             ) {
+        Page<Salle> salleController = salleService.getAllSalleByPage(page, size);
         modelmap.addAttribute("SalleVue", salleController);
+        modelmap.addAttribute("currentPage", page);
+        modelmap.addAttribute("pages", new int[salleController.getTotalPages()]);
         return "ListeSalle";
     }
     @RequestMapping("/deleteSalle")
     // Modelmap:transporter des données entre un contrôleur et une vue
-    public String deleteSalle(@RequestParam("id") Long id, ModelMap modelmap) {
+    public String deleteSalle(@RequestParam("id") Long id, ModelMap modelmap,
+                             @RequestParam(name = "page",defaultValue = "0") int page,
+                              @RequestParam(name = "size",defaultValue = "3") int size
+
+                             ) {
         salleService.deleteSalleById(id);
-       return  listeSalle(modelmap);
+        Page<Salle> salleController = salleService.getAllSalleByPage(page, size);
+        modelmap.addAttribute("SalleVue", salleController);
+        modelmap.addAttribute("currentPage", page);
+        modelmap.addAttribute("pages", new int[salleController.getTotalPages()]);
+        return "ListeSalle";
     }
+
+
     @RequestMapping("/editSalle")
     //@RequestParam est utilisé pour extraire des paramètres spécifiques de la requête,
     public String editSalle(@RequestParam("id") Long id, ModelMap modelmap) {

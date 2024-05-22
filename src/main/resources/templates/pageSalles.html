@@ -3,22 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste des salles</title>
-
     <link rel="stylesheet" th:href="@{/css/style.css}">
-
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="~{layout/navbar.html}"></div>
+<section id="home" class="welcome-hero" style="background-image: url('/images/welcome-hero/Salle_de_conférence_Um6p.jpg')"></section>
+<section id="list-topics" class="list-topics">
+    <div class="container" id="Reserver">
+        <div class="text-center">
+            <div class="list-topics-content">
+                <ul id="salles-list">
+                    <li data-type="reunion">
+                        <div class="single-list-topics-content">
+                            <div class="single-list-topics-icon">
+                                <img th:src="@{/img/reunion.png}" alt="Salle de Réunion" style="width:100px">
+                            </div>
+                            <h2><a href="#" onclick="filterSalles('Salle de Réunion')">Salle de Réunion</a></h2>
+                        </div>
+                    </li>
+                    <li data-type="conference">
+                        <div class="single-list-topics-content">
+                            <div class="single-list-topics-icon">
+                                <img th:src="@{/img/conference.png}" alt="Salle de Conférence" style="width:100px">
+                            </div>
+                            <h2><a href="#" onclick="filterSalles('Salle de Conférence')">Salle de Conférence</a></h2>
+                        </div>
+                    </li>
+                    <li data-type="formation">
+                        <div class="single-list-topics-content">
+                            <div class="single-list-topics-icon">
+                                <img th:src="@{/img/formation.png}" alt="Salle de Formation" style="width:100px">
+                            </div>
+                            <h2><a href="#" onclick="filterSalles('Salle de Formation')">Salle de Formation</a></h2>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="single-list-topics-content">
+                            <div class="single-list-topics-icon">
+                                <img th:src="@{/img/reunion-du-conseil-dadministration.png}" alt="Toutes les Salles" style="width:100px">
+                            </div>
+                            <h2><a href="#" onclick="filterSalles('all')">Toutes les Salles</a></h2>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="room-list" style="margin-top: 130px">
-    <div th:each="salle : ${SalleVue}" class="room-item" th:style="'background-image: url(' + ${salle.photo} + ')'">
+    <div th:each="salle : ${SalleVue}" class="room-item" th:attr="data-type=${salle.type_equipement}" th:style="'background-image: url(' + ${salle.photo} + ')'">
         <div class="room-info">
             <p th:text="${salle.type_equipement}"></p>
-            <p> <span th:text="${salle.capacite}"></span>Personnes</p>
-            <p>Prix:<span th:text="${salle.tarif}"></span> DH/heures</p>
+            <p><span th:text="${salle.capacite}"></span> Personnes</p>
+            <p>Prix: <span th:text="${salle.tarif}"></span> DH/heure</p>
         </div>
     </div>
 </div>
 <div th:replace="~{layout/footer.html}"></div>
-
+<script>
+    function filterSalles(type) {
+        var rooms = document.querySelectorAll('.room-list .room-item');
+        rooms.forEach(function(room) {
+            if (type === 'all' || room.getAttribute('data-type').toLowerCase() === type.toLowerCase()) {
+                room.classList.remove('hidden');
+            } else {
+                room.classList.add('hidden');
+            }
+        });
+    }
+</script>
 </body>
 </html>
