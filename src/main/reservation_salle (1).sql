@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 15 mai 2024 à 12:08
+-- Généré le : mer. 22 mai 2024 à 09:53
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.0.30
 
@@ -84,12 +84,10 @@ CREATE TABLE `salle` (
 --
 
 INSERT INTO `salle` (`id_salle`, `capacite`, `adresse_salle`, `disponibilite`, `nom_salle`, `photo`, `tarif`, `type_equipement`, `reservation2_id_reservation`, `type_salle_id_type`) VALUES
-(48, 100, 'la gironde Casablanca', b'0', 'salle2', 'https://oriensys.ma/wp-content/uploads/2023/02/location-salle-de-formation.jpg', 200, 'formation', NULL, NULL),
-(49, 50, 'ain sbaa casablanca', b'0', 'Meilleure Salle', 'https://timoulayhotel.com/img/cn1.jpg', 300, 'conference', NULL, NULL),
-(50, 24, 'centre ville casa', b'0', 'superbe Salle', 'https://www.sesam-institut.com/wp-content/uploads/2015/01/IMG_5044.jpg', 250, 'Salle de Formation', NULL, NULL),
-(51, 10, 'el madina', b'0', 'salle 3', 'https://blog.1001salles.com/wp-content/uploads/2015/04/preparer-sa-salle.jpg', 230, 'Salle Réunion', NULL, NULL),
-(52, 7, 'belvedere', b'0', 'salle 4', 'https://blog.hub-grade.com/wp-content/uploads/2022/04/elena-baidak-pz69kY0UQuQ-unsplash-BG.jpg', 180, 'Salle Réunion', NULL, NULL),
-(53, 80, 'la gironde Casablanca', b'0', 'salle2', 'https://oriensys.ma/wp-content/uploads/2023/02/location-salle-de-formation.jpg', 200, 'reunion', NULL, NULL);
+(67, 20, 'ain sbaa', b'0', 'salle2', 'https://www.sesam-institut.com/wp-content/uploads/2015/01/IMG_5044.jpg', 400, 'Salle de Formation', NULL, NULL),
+(69, 15, 'Rue mohamed 6 casa', b'0', 'salle3', 'https://timoulayhotel.com/img/cn1.jpg', 350, 'Salle de Conférence', NULL, NULL),
+(70, 40, ' centre ville', b'0', 'SALLE4', 'https://kactus.com/blog/wp-content/uploads/2018/02/54_laffitte_club_confair_vivaldi.jpg', 500, 'Salle de Conférence', NULL, NULL),
+(71, 7, 'rue tachfine', b'0', 'Salle 5', 'https://blog.1001salles.com/wp-content/uploads/2015/04/preparer-sa-salle.jpg', 250, 'Salle de Réunion', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -196,7 +194,7 @@ ALTER TABLE `reservation`
 -- AUTO_INCREMENT pour la table `salle`
 --
 ALTER TABLE `salle`
-  MODIFY `id_salle` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id_salle` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT pour la table `type_salle`
